@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About OptiCrop | Engineering a Sustainable Future</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#afc7ff",
+                        "surface-variant": "#353534",
+                        "on-tertiary-container": "#003d88",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary": "#002e6a",
+                        "surface": "#131313",
+                        "primary-container": "#22c55e",
+                        "outline": "#869585",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed": "#002109",
+                        "surface-dim": "#131313",
+                        "surface-container-highest": "#353534",
+                        "on-secondary-fixed": "#002113",
+                        "on-background": "#e5e2e1",
+                        "on-primary-container": "#004b1e",
+                        "tertiary-fixed": "#d8e2ff",
+                        "surface-container": "#201f1f",
+                        "on-secondary": "#003824",
+                        "outline-variant": "#3d4a3d",
+                        "primary-fixed-dim": "#4ae176",
+                        "on-tertiary-fixed": "#001a42",
+                        "secondary-fixed-dim": "#4edea3",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "primary-fixed": "#6bff8f",
+                        "on-error": "#690005",
+                        "on-primary-fixed-variant": "#005321",
+                        "primary": "#4be277",
+                        "on-secondary-container": "#00311f",
+                        "background": "#0a0a0a",
+                        "surface-bright": "#3a3939",
+                        "on-primary": "#003915",
+                        "inverse-primary": "#006e2f",
+                        "surface-tint": "#4ae176",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary": "#4edea3",
+                        "secondary-container": "#00a572",
+                        "on-surface-variant": "#bccbb9",
+                        "inverse-surface": "#e5e2e1",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-surface": "#e5e2e1",
+                        "tertiary-container": "#82abff",
+                        "surface-container-lowest": "#0e0e0e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1440px",
+                        "stack-md": "16px",
+                        "gutter": "24px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #e5e2e1; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(34, 197, 94, 0.3);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #4be277 0%, #00a572 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-mesh {
+            background: radial-gradient(circle at 50% -20%, rgba(34, 197, 94, 0.15), transparent 60%);
+        }
+    </style>
+</head>
+<body class="bg-background selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<nav class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">OptiCrop</div>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Platform</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Technology</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Solutions</a>
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1" href="#">About</a>
+</div>
+<div class="flex gap-stack-md">
+<button class="px-5 py-2 font-label-md text-label-md text-on-surface hover:opacity-80 transition-opacity">Login</button>
+<button class="px-5 py-2 bg-primary text-on-primary font-bold rounded-lg active:scale-95 transition-transform hover:opacity-90">Get Started</button>
+</div>
+</nav>
+</header>
+<main class="pt-32 bg-mesh">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop mb-stack-lg">
+<h1 class="font-headline-xl text-headline-xl mb-stack-md gradient-text max-w-2xl">About OptiCrop</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+                We are architecting the future of food security by synthesizing agricultural wisdom with computational precision.
+            </p>
+</section>
+<!-- Problem Statement -->
+<section class="relative max-w-container-max mx-auto px-margin-desktop py-20">
+<div class="grid md:grid-cols-2 gap-gutter items-center">
+<div class="space-y-stack-md">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="text-label-sm font-label-sm">THE PRECISION EDGE</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Feeding a Growing Planet</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        By 2050, the world needs <span class="text-primary font-bold">70% more food</span> to sustain a population of nearly 10 billion. Current farming methodologies are reaching their efficiency limits. OptiCrop AI empowers modern farmers to bridge this critical gap using deep neural networks and hyper-local environmental data.
+                    </p>
+<div class="flex items-start gap-4 p-4 glass-card rounded-xl">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Neural Network Analysis</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Converting petabytes of agricultural telemetry into actionable soil intelligence.</p>
+</div>
+</div>
+</div>
+<div class="relative h-[400px] rounded-xl overflow-hidden glass-card">
+<img class="w-full h-full object-cover opacity-60" data-alt="A cinematic, high-contrast aerial shot of a futuristic precision farm at dawn. Long, perfectly straight rows of crops glow with vibrant green life against the dark, rich soil. Transparent digital data overlays and geometric neon green UI elements float over the fields, indicating moisture levels and nutrient density. The lighting is moody and professional, with a deep green and black SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKK9C8Ytb8mgaV5APEZIz8BwaE6bMj_vsohVywDh5ZgMoYNhv2MxIyyA8TSK0JviXvap-MFrAYZx8cnIDXn7QRj5yz0O3dLlvDShvX_hPxzvXR8wVKYLXpQS9B-1YnYpNsmd7dj-2H1XpTLyQzGkdxb5P4w2vV9NZSLqMw4qiFiakO7TWRneV6_lnKh6VzI3tRC1QbuBpQRlzJPm1CskHU7WyeOgFtH2-I0cwaopHkKcvfsIWG4UjDrG1kXHwrnV6Fox-TDkK2OQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- How It Works: The 7 Vectors -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-20">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">The 7 Critical Vectors</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Precision inputs driving hyper-accurate predictive models.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-stack-md">
+<!-- Vector 1: N -->
+<div class="glass-card p-6 rounded-xl text-center group cursor-default">
+<div class="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">science</span>
+</div>
+<span class="block font-headline-md text-headline-md text-on-surface">N</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Nitrogen</span>
+</div>
+<!-- Vector 2: P -->
+<div class="glass-card p-6 rounded-xl text-center group cursor-default">
+<div class="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">science</span>
+</div>
+<span class="block font-headline-md text-headline-md text-on-surface">P</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Phosphorous</span>
+</div>
+<!-- Vector 3: K -->
+<div class="glass-card p-6 rounded-xl text-center group cursor-default">
+<div class="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">science</span>
+</div>
+<span class="block font-headline-md text-headline-md text-on-surface">K</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Potassium</span>
+</div>
+<!-- Vector 4: Temperature -->
+<div class="glass-card p-6 rounded-xl text-center group cursor-default">
+<div class="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">thermostat</span>
+</div>
+<span class="block font-headline-md text-headline-md text-on-surface">Temp</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Air &amp; Soil</span>
+</div>
+<!-- Vector 5: Humidity -->
+<div class="glass-card p-6 rounded-xl text-center group cursor-default">
+<div class="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">humidity_percentage</span>
+</div>
+<span class="block font-headline-md text-headline-md text-on-surface">Humid</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Atmospheric</span>
+</div>
+<!-- Vector 6: Soil pH -->
+<div class="glass-card p-6 rounded-xl text-center group cursor-default">
+<div class="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">opacity</span>
+</div>
+<span class="block font-headline-md text-headline-md text-on-surface">pH</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Soil Acidity</span>
+</div>
+<!-- Vector 7: Rainfall -->
+<div class="glass-card p-6 rounded-xl text-center group cursor-default">
+<div class="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">rainy</span>
+</div>
+<span class="block font-headline-md text-headline-md text-on-surface">Rain</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Precipitation</span>
+</div>
+</div>
+</section>
+<!-- Use Cases -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-20">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg text-center">Engineered for Results</h2>
+<div class="grid md:grid-cols-3 gap-gutter">
+<!-- Case 1 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A close-up, high-detail macro shot of a farmer's hands holding a tablet displaying vibrant green and yellow heat maps over a field. The scene is illuminated by the soft glow of the screen and the warm light of a late afternoon sun. The aesthetic is industrial yet high-tech, focusing on data-driven nutrient application and precision fertilization." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE1dgUw6Vd4OZU8vcuxIi6M_zssEOFSScxYSDUTRRIVTIvHz3tHRULMyAeA0aFS6If4kiofiNdnvIx6qQvm2Ic_hJZ_NGBuewi37Muk9CSnZhHPnCMdSCYN4mJ32cZ7D6QTluh9RPgK4Mbl7eL0OlPSHW6H2Z8anFwI2jV1PkiGoVQRc8J5R6Tv7ubDNI1UKVliN14cx4wvNC2ui1Q-2Miv43ivXJK-e48xCoalm2oo0bxFQhK1EVE1TdIWHjmcRrzlca5f-z-KfQ"/>
+<div class="absolute top-4 left-4 px-3 py-1 bg-primary text-on-primary font-label-sm text-label-sm rounded-full">Precision</div>
+</div>
+<div class="p-stack-md flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Precision Fertilization</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time N-P-K recommendation engine that optimizes fertilizer usage by up to 25%, reducing waste and environmental runoff.</p>
+</div>
+</div>
+<!-- Case 2 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A sophisticated irrigation system in a large-scale agricultural setting, featuring sleek black pipes and high-tech sprayers. The background shows a lush, healthy field under a clear blue sky, with digital moisture sensors visible in the soil. Glowing light-green data lines connect the sensors to a central hub, illustrating irrigation optimization and smart watering technologies." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOl7AgY-xjf0N5e3XnieV1LxTHMPPyh0aG-YOSnfe36AjYxByci1DR7oWvxHMVjM4OB801Pirg9WdCK1_JQrMHdGE12ioD0h_xHKC6mifFWPCg9P46jaEgKL7rGM3AxC177pG6vEwa13OtDh01DrvlHLWnimVPuJJ0SnisgBed-cD_xYt-0P0MnGhsmSgNx81bPIvX9_Z3gLba3v9XUrXgxkVQQFU_SDIWPcFllRHol-J8txsTo0mbJnOEK0P1U-tQAVsYcbgFSG0"/>
+<div class="absolute top-4 left-4 px-3 py-1 bg-secondary text-on-secondary-container font-label-sm text-label-sm rounded-full">Optimization</div>
+</div>
+<div class="p-stack-md flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Irrigation Optimization</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Intelligent watering protocols based on transpiration rates and sub-surface moisture telemetry to conserve critical water resources.</p>
+</div>
+</div>
+<!-- Case 3 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-tech laboratory setting where various crops like corn, wheat, and soybeans are being analyzed. Transparent holographic displays float in the air, showing genomic data and climate prediction models. The lighting is cool-toned with bright green highlights, emphasizing the cutting-edge technology behind crop suitability and high-yield predictions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKMHecK3Z7z1aqeKQ8un6M2MVLROV76xvjx0M5Ijks_k4ZReiLKGobecvk2ixYQq1aToPneIsgwVTGQTI3CokJjuNcmUsvkYLaK8kXsXr8sRbFouBUdSFhRI6fOMBcL2Ge4ltmAC0I1DIuYX-XLZ21H9WrsDMDgKesvh2-705WRF8mgMdVv_TJaxUIaXws5XYHS2OK7DXG_LOmdGlPq4vGlplzqTBPtLgru2kdWeevqKgDoibjiu2qLG8BSa3JZnLY3lkN_DXFJrk"/>
+<div class="absolute top-4 left-4 px-3 py-1 bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm rounded-full">Intelligence</div>
+</div>
+<div class="p-stack-md flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Crop Suitability</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Machine learning models that predict crop yields by matching local micro-climates with genetic performance profiles.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Technology Stack -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-20">
+<div class="glass-card p-stack-lg rounded-xl border-primary/20 bg-primary/5">
+<div class="grid md:grid-cols-2 gap-gutter items-center">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-md">Industry-Standard Intelligence</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Our platform is built upon a foundation of enterprise-grade data science. We leverage the world's most robust open-source ecosystems to ensure that our models are accurate, scalable, and verifiable.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-stack-sm justify-center md:justify-end">
+<span class="px-4 py-2 bg-background border border-outline-variant/30 rounded-lg font-label-md text-label-md text-on-surface">Python</span>
+<span class="px-4 py-2 bg-background border border-outline-variant/30 rounded-lg font-label-md text-label-md text-on-surface">Scikit-learn</span>
+<span class="px-4 py-2 bg-background border border-outline-variant/30 rounded-lg font-label-md text-label-md text-on-surface">Flask</span>
+<span class="px-4 py-2 bg-background border border-outline-variant/30 rounded-lg font-label-md text-label-md text-on-surface">Pandas</span>
+<span class="px-4 py-2 bg-background border border-outline-variant/30 rounded-lg font-label-md text-label-md text-on-surface">NumPy</span>
+<span class="px-4 py-2 bg-background border border-outline-variant/30 rounded-lg font-label-md text-label-md text-on-surface">TensorFlow</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-20 text-center">
+<div class="max-w-3xl mx-auto px-margin-desktop">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-stack-md">Ready to evolve?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">Join the agricultural revolution and secure your farm's productivity for decades to come.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="px-8 py-4 bg-primary text-on-primary font-bold rounded-xl text-body-md hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20">Launch Dashboard</button>
+<button class="px-8 py-4 glass-card font-bold rounded-xl text-body-md hover:bg-surface-variant transition-all">Schedule a Demo</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg border-t border-outline-variant/20 bg-surface-container-lowest">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-stack-md max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start">
+<div class="font-headline-md text-headline-md font-bold text-primary mb-2">OptiCrop</div>
+<p class="font-body-md text-body-md text-secondary">© 2024 OptiCrop AI. Engineering a sustainable future.</p>
+</div>
+<div class="flex gap-gutter">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

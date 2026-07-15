@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgriPredict | Precision AI Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#4ae176",
+                        "on-surface-variant": "#bccbb9",
+                        "surface-tint": "#4ae176",
+                        "surface-dim": "#131313",
+                        "on-secondary-fixed": "#00210c",
+                        "on-primary": "#003915",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#50dfa4",
+                        "on-primary-fixed-variant": "#005321",
+                        "inverse-primary": "#006e2f",
+                        "on-tertiary": "#003824",
+                        "secondary-fixed-dim": "#4de082",
+                        "on-secondary-container": "#003e1c",
+                        "surface": "#131313",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-variant": "#353534",
+                        "tertiary-fixed": "#6ffbbe",
+                        "primary-fixed": "#6bff8f",
+                        "background": "#131313",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-container": "#22c55e",
+                        "on-secondary": "#003919",
+                        "surface-bright": "#3a3939",
+                        "secondary": "#4de082",
+                        "surface-container-lowest": "#0e0e0e",
+                        "outline": "#869585",
+                        "secondary-container": "#00b55d",
+                        "on-tertiary-fixed": "#002113",
+                        "on-primary-container": "#004b1e",
+                        "primary": "#4be277",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary-fixed": "#6dfe9c",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#002109",
+                        "on-surface": "#e5e2e1",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container": "#201f1f",
+                        "on-background": "#e5e2e1",
+                        "tertiary-container": "#28c38a",
+                        "outline-variant": "#3d4a3d",
+                        "on-tertiary-container": "#004a31",
+                        "on-secondary-fixed-variant": "#005227",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#353534"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "2xl": "48px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "3xl": "64px",
+                        "xl": "32px",
+                        "container-max": "1440px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "mono-data": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0a0a;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .floating-label-group {
+            position: relative;
+        }
+
+        .floating-input {
+            background: rgba(30, 30, 30, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .floating-input:focus {
+            outline: none;
+            border-bottom-color: #22c55e;
+            background: rgba(34, 197, 94, 0.05);
+            box-shadow: 0 4px 20px -5px rgba(34, 197, 94, 0.2);
+        }
+
+        .floating-label {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.2s ease;
+            pointer-events: none;
+            color: #bccbb9;
+        }
+
+        .floating-input:focus ~ .floating-label,
+        .floating-input:not(:placeholder-shown) ~ .floating-label {
+            top: -2px;
+            left: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #4be277;
+            background: #131313;
+            padding: 0 6px;
+            transform: translateY(-50%);
+        }
+
+        .primary-gradient-btn {
+            background: linear-gradient(135deg, #4be277 0%, #00b55d 100%);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+            transition: all 0.3s ease;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .primary-gradient-btn:hover {
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .primary-gradient-btn:active {
+            transform: scale(0.98);
+        }
+
+        .bg-mesh {
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(34, 197, 94, 0.08) 0, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(34, 197, 94, 0.05) 0, transparent 50%);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col selection:bg-primary/30">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-lg py-md max-w-container-max mx-auto w-full">
+<div class="font-headline-md text-headline-md font-bold text-primary drop-shadow-[0_0_15px_rgba(75,226,119,0.4)]">
+                AgriPredict
+            </div>
+<div class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Prediction</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Analysis</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">History</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow pt-32 pb-24 px-margin-mobile md:px-lg relative overflow-hidden bg-mesh">
+<!-- Background Animation Decorative -->
+<div class="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute bottom-0 right-0 w-full h-[614px] pointer-events-none opacity-20">
+
+</div>
+<div class="max-w-4xl mx-auto relative z-10">
+<div class="glass-card rounded-3xl p-xl md:p-3xl border border-white/5">
+<!-- Card Header -->
+<div class="mb-xl text-center md:text-left">
+<div class="inline-flex items-center gap-sm bg-primary/10 text-primary px-md py-xs rounded-full mb-md border border-primary/20">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">AI Analysis Active</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-sm leading-tight">Find Your Crop</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        Leverage our precision AI analysis to determine the optimal crop for your land based on soil composition and environmental factors.
+                    </p>
+</div>
+<!-- Prediction Form -->
+<form class="grid grid-cols-1 md:grid-cols-2 gap-x-xl gap-y-lg" id="predictionForm">
+<!-- Soil Nutrients Section -->
+<div class="md:col-span-2 mt-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">science</span> Soil Composition
+                        </h3>
+</div>
+<!-- Nitrogen -->
+<div class="floating-label-group">
+<input class="floating-input w-full h-14 px-md rounded-xl text-on-surface font-body-md" id="nitrogen" max="140" min="0" placeholder=" " required="" step="1" type="number"/>
+<label class="floating-label" for="nitrogen">Nitrogen (N)</label>
+<div class="flex justify-between mt-unit px-unit">
+<span class="text-label-sm text-on-surface-variant/60">Range: 0-140 ppm</span>
+<span class="validation-msg hidden text-error text-label-sm">Invalid value</span>
+</div>
+</div>
+<!-- Phosphorous -->
+<div class="floating-label-group">
+<input class="floating-input w-full h-14 px-md rounded-xl text-on-surface font-body-md" id="phosphorous" max="145" min="5" placeholder=" " required="" step="1" type="number"/>
+<label class="floating-label" for="phosphorous">Phosphorous (P)</label>
+<div class="flex justify-between mt-unit px-unit">
+<span class="text-label-sm text-on-surface-variant/60">Range: 5-145 ppm</span>
+<span class="validation-msg hidden text-error text-label-sm">Invalid value</span>
+</div>
+</div>
+<!-- Potassium -->
+<div class="floating-label-group">
+<input class="floating-input w-full h-14 px-md rounded-xl text-on-surface font-body-md" id="potassium" max="205" min="5" placeholder=" " required="" step="1" type="number"/>
+<label class="floating-label" for="potassium">Potassium (K)</label>
+<div class="flex justify-between mt-unit px-unit">
+<span class="text-label-sm text-on-surface-variant/60">Range: 5-205 ppm</span>
+</div>
+</div>
+<!-- pH Value -->
+<div class="floating-label-group">
+<input class="floating-input w-full h-14 px-md rounded-xl text-on-surface font-body-md" id="ph" max="14" min="0" placeholder=" " required="" step="0.1" type="number"/>
+<label class="floating-label" for="ph">pH Value</label>
+<div class="flex justify-between mt-unit px-unit">
+<span class="text-label-sm text-on-surface-variant/60">Range: 0.0-14.0</span>
+</div>
+</div>
+<!-- Environment Section -->
+<div class="md:col-span-2 mt-xl">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">thermostat</span> Environmental Factors
+                        </h3>
+</div>
+<!-- Temperature -->
+<div class="floating-label-group">
+<input class="floating-input w-full h-14 px-md rounded-xl text-on-surface font-body-md" id="temp" placeholder=" " required="" step="0.1" type="number"/>
+<label class="floating-label" for="temp">Temperature (°C)</label>
+</div>
+<!-- Humidity -->
+<div class="floating-label-group">
+<input class="floating-input w-full h-14 px-md rounded-xl text-on-surface font-body-md" id="humidity" max="100" min="0" placeholder=" " required="" step="0.1" type="number"/>
+<label class="floating-label" for="humidity">Humidity (%)</label>
+</div>
+<!-- Rainfall -->
+<div class="floating-label-group md:col-span-2">
+<input class="floating-input w-full h-14 px-md rounded-xl text-on-surface font-body-md" id="rainfall" min="0" placeholder=" " required="" step="0.1" type="number"/>
+<label class="floating-label" for="rainfall">Rainfall (mm)</label>
+</div>
+<!-- Submit Button -->
+<div class="md:col-span-2 mt-2xl">
+<button class="primary-gradient-btn w-full py-xl rounded-2xl flex items-center justify-center gap-md text-on-primary font-bold font-body-lg group" type="submit">
+                            Predict Crop
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Status Feedback (Hidden by default) -->
+<div class="hidden fixed inset-0 z-20 flex items-center justify-center p-md bg-background/80 backdrop-blur-sm" id="resultsOverlay">
+<div class="glass-card max-w-md w-full p-2xl rounded-3xl text-center scale-95 transition-all">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-xl">
+<span class="material-symbols-outlined text-primary text-[48px] animate-pulse">analytics</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Analyzing Parameters</h2>
+<p class="text-on-surface-variant font-body-md mb-xl">Our neural networks are calculating the best fit for your soil profile...</p>
+<div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary animate-[loading_2s_ease-in-out_infinite]" style="width: 40%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant w-full mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg py-xl gap-md w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-on-surface">AgriPredict</div>
+<div class="text-on-surface-variant font-body-md text-body-md text-center">
+                © 2024 AgriPredict. Cultivating a sustainable future through precision data.
+            </div>
+<div class="flex gap-lg flex-wrap justify-center">
+<a class="text-on-surface-variant hover:text-secondary transition-opacity hover:opacity-80 font-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-opacity hover:opacity-80 font-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary transition-opacity hover:opacity-80 font-body-md" href="#">Sustainability Report</a>
+<a class="text-on-surface-variant hover:text-secondary transition-opacity hover:opacity-80 font-body-md" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and Form Logic
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const overlay = document.getElementById('resultsOverlay');
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            
+            // Simulating analysis delay
+            setTimeout(() => {
+                overlay.querySelector('h2').innerText = 'Analysis Complete';
+                overlay.querySelector('p').innerText = 'Results have been generated and saved to your history.';
+                overlay.querySelector('.animate-pulse').innerText = 'check_circle';
+                
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove('flex');
+                    // Reset or redirect logic here
+                }, 2000);
+            }, 2500);
+        });
+
+        // Input validation visual cues
+        const inputs = document.querySelectorAll('input[type="number"]');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                const min = parseFloat(this.getAttribute('min'));
+                const max = parseFloat(this.getAttribute('max'));
+                const val = parseFloat(this.value);
+                
+                if ((min !== undefined && val < min) || (max !== undefined && val > max)) {
+                    this.classList.add('border-error');
+                    this.classList.remove('focus:border-bottom-color-[#22c55e]');
+                } else {
+                    this.classList.remove('border-error');
+                }
+            });
+        });
+    </script>
+<style>
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(300%); }
+        }
+    </style>
+</body></html>

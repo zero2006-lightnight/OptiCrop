@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OptiCrop | Smart Agricultural Optimization</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#22c55e",
+                    "on-tertiary-fixed": "#001a42",
+                    "secondary-container": "#00a572",
+                    "on-background": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-dim": "#131313",
+                    "surface-variant": "#353534",
+                    "surface-container-highest": "#353534",
+                    "tertiary-container": "#82abff",
+                    "surface-tint": "#4ae176",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-bright": "#3a3939",
+                    "on-primary-fixed-variant": "#005321",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "on-secondary-fixed": "#002113",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#313030",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#004395",
+                    "on-secondary": "#003824",
+                    "on-error": "#690005",
+                    "primary": "#4be277",
+                    "secondary-fixed-dim": "#4edea3",
+                    "inverse-primary": "#006e2f",
+                    "surface-container": "#201f1f",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-container-high": "#2a2a2a",
+                    "background": "#0a0a0a",
+                    "secondary": "#4edea3",
+                    "on-primary-container": "#004b1e",
+                    "primary-fixed-dim": "#4ae176",
+                    "on-primary": "#003915",
+                    "outline-variant": "#3d4a3d",
+                    "on-tertiary-container": "#003d88",
+                    "primary-fixed": "#6bff8f",
+                    "surface-container-low": "#1c1b1b",
+                    "surface": "#131313",
+                    "tertiary-fixed": "#d8e2ff",
+                    "on-tertiary": "#002e6a",
+                    "error": "#ffb4ab",
+                    "outline": "#869585",
+                    "on-primary-fixed": "#002109",
+                    "inverse-surface": "#e5e2e1",
+                    "on-surface-variant": "#bccbb9",
+                    "on-secondary-container": "#00311f",
+                    "on-surface": "#e5e2e1",
+                    "tertiary": "#afc7ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "gutter": "20px",
+                    "md": "16px",
+                    "xl": "40px",
+                    "container-max": "1440px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "mono-data": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "mono-data": ["14px", {"lineHeight": "20px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(34, 197, 94, 0.3);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #e5e2e1;
+            scroll-behavior: smooth;
+        }
+
+        .primary-glow {
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-lg text-body-lg selection:bg-primary-container selection:text-on-primary-container">
+<!-- Global Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-md max-w-container-max mx-auto">
+<div class="font-display-lg text-title-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="energy_savings_leaf">energy_savings_leaf</span>
+                OptiCrop
+            </div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-primary border-b-2 border-primary pb-1 font-body-lg text-body-lg" href="#">Platform</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-lg text-body-lg" href="#">Analysis</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-lg text-body-lg" href="#">Sustainability</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-lg text-body-lg" href="#">Insights</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="hidden md:block text-on-surface-variant hover:text-on-surface transition-colors font-body-lg text-body-lg px-md">Log In</button>
+<button class="bg-primary-container text-on-primary-container px-lg py-sm rounded-lg font-bold hover:opacity-80 transition-all active:scale-95">Get Started</button>
+</div>
+</div>
+</header>
+<main class="relative">
+<!-- Shader Background Wrapper -->
+<div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+<!-- STITCH_SHADER_START:ANIMATION_15 class="absolute inset-0 w-full h-[1536px]" -->
+<div class="absolute inset-0 w-full h-[1536px]" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_15" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_15');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create organic, flowing movement using sine waves and noise
+    float movement = sin(uv.x * 2.0 + u_time * 0.4) * cos(uv.y * 1.5 + u_time * 0.3);
+    float movement2 = sin(uv.y * 3.0 - u_time * 0.5) * cos(uv.x * 2.0 + u_time * 0.2);
+    
+    // OptiCrop Brand Colors
+    vec3 baseBg = vec3(0.039, 0.039, 0.039); // #0a0a0a
+    vec3 accentGreen = vec3(0.133, 0.773, 0.369); // #22c55e
+    vec3 deepForest = vec3(0.02, 0.08, 0.04); // Deep background green
+    
+    // Mix colors based on position and time
+    float mixFactor = smoothstep(0.2, 0.8, uv.y + movement * 0.2);
+    float mixFactor2 = smoothstep(0.3, 0.9, uv.x + movement2 * 0.15);
+    
+    vec3 color = mix(baseBg, deepForest, mixFactor);
+    color = mix(color, accentGreen * 0.15, mixFactor2 * (sin(u_time * 0.2) * 0.5 + 0.5));
+    
+    // Add a subtle vignette
+    float vignette = 1.0 - length(uv - 0.5) * 0.8;
+    color *= vignette;
+    
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_15 -->
+</div>
+<!-- Hero Section -->
+<section class="relative z-10 pt-48 pb-32 px-gutter overflow-hidden">
+<div class="max-w-container-max mx-auto text-center animate-fade-in-up">
+<div class="inline-flex items-center gap-2 px-md py-xs rounded-full glass-card mb-lg border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-label-caps font-label-caps text-primary uppercase tracking-widest">Next-Gen Agronomy Now Active</span>
+</div>
+<h1 class="font-display-lg text-display-lg md:text-[84px] leading-tight mb-md tracking-tighter">
+<span class="block">Revolutionizing Growth with</span>
+<span class="text-primary-container drop-shadow-[0_0_20px_rgba(34,197,94,0.3)]">OptiCrop</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-xl">
+                    Smart Agricultural Production Optimization Engine. Harness the power of planetary-scale data and localized ML modeling to maximize your yield while minimizing footprint.
+                </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-md">
+<button class="bg-primary-container text-on-primary-container px-xl py-md rounded-xl font-bold text-title-md primary-glow hover:scale-105 active:scale-95 transition-all">
+                        Find Your Crop
+                    </button>
+<button class="glass-card text-on-surface px-xl py-md rounded-xl font-bold text-title-md hover:bg-white/10 transition-all border-white/20">
+                        View Demo
+                    </button>
+</div>
+<div class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-lg opacity-60">
+<div class="flex flex-col items-center">
+<span class="font-mono-data text-display-lg text-primary">98%</span>
+<span class="text-label-caps font-label-caps">Accuracy Rate</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-mono-data text-display-lg text-primary">12M+</span>
+<span class="text-label-caps font-label-caps">Hectares Tracked</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-mono-data text-display-lg text-primary">30%</span>
+<span class="text-label-caps font-label-caps">Water Saved</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-mono-data text-display-lg text-primary">2.4x</span>
+<span class="text-label-caps font-label-caps">ROI Typical</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="relative z-10 py-xl px-gutter bg-surface-container-lowest/50 backdrop-blur-md">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-24 animate-fade-in-up">
+<h2 class="font-headline-lg text-headline-lg mb-sm">Precision Ecosystem</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">Integrated tools designed for the modern farm operator, providing a mission-control view of every acre.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Feature 1 -->
+<div class="md:col-span-6 lg:col-span-4 glass-card p-xl rounded-xl animate-fade-in-up" style="animation-delay: 0.1s;">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-lg border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="science">science</span>
+</div>
+<h3 class="font-title-md text-title-md mb-md">Soil Analysis</h3>
+<p class="text-on-surface-variant">Advanced nutrient and moisture detection utilizing satellite hyperspectral imaging and localized ground sensors for real-time composition mapping.</p>
+</div>
+<!-- Feature 2 -->
+<div class="md:col-span-6 lg:col-span-8 glass-card p-xl rounded-xl animate-fade-in-up flex flex-col md:flex-row gap-lg" style="animation-delay: 0.2s;">
+<div class="flex-1">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-lg border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="thermostat">thermostat</span>
+</div>
+<h3 class="font-title-md text-title-md mb-md">Climate Assessment</h3>
+<p class="text-on-surface-variant">Hyper-local weather modeling that predicts micro-climate shifts down to the square meter. Stay ahead of frost, droughts, and pests.</p>
+</div>
+<div class="w-full md:w-1/2 min-h-[200px] rounded-lg overflow-hidden glass-card">
+<div class="w-full h-full bg-cover bg-center" data-alt="A high-tech digital weather map of a large agricultural field showing thermal patterns in vibrant greens and yellows. The UI is dark and sleek, with floating data points and semi-transparent glass elements over a futuristic nocturnal satellite view of farmland." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC0-Q7bwJGUMDRqrHFKVA3nItl9nFwwa17v8ph7GZY_gLJxzWEfxmvTSC2MW9VS-ClI9sUhBjcHg4cb9iL8aBquBiL-x4dbPrueXPe9X7wTsWSfsMH-eC7LSKwIKdwWXevK4LGAz9HkGFm5bNPPXckARzZ2F1hCyBkPnme0NkVMkc7b0o69AojxzhygZdO52Ej7QHU-UD5CKllylaRZZm6husAYO3xbu6kkwgqGKPsojg9-YGkzOTarOnKu1Mr6z5yy3acHExMeigA')"></div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="md:col-span-12 lg:col-span-7 glass-card p-xl rounded-xl animate-fade-in-up flex flex-col justify-between" style="animation-delay: 0.3s;">
+<div class="flex flex-col md:flex-row gap-lg">
+<div class="w-full md:w-1/3 min-h-[200px] rounded-lg overflow-hidden glass-card">
+<div class="w-full h-full bg-cover bg-center" data-alt="Close up of a futuristic agronomy tablet interface showing complex AI-generated growth charts and predictive yield lines. The background is a dark field at dusk with subtle green neon highlights along the crop rows, illustrating high-precision machine learning in a sustainable farming context." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCtQZgUKC-y8p1mJf4SIZwDajf1cBEsxbryAb9bEReJ2tshoyv0kqZRZw7I6dYOc7g8ImyiI41V9D_9s6jmoIwMIrzrYp2y5L9RoJPEPSCXDZuHUQRDm8YXlsJMNHSvlaHUvUmvqGpGqd4xMQPzK1CO4uWDXH-yl5L5eQ94D6yzgHsVeGXKolfXLkbXMQvcViASADWIHilKmCyD3ZkL0A-5HsarC48k8bhtCSKT8d2VUDWYJ4Z_ZrunRB34ArLswrQGBHMYk5nJ46c')"></div>
+</div>
+<div class="flex-1">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-lg border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="psychology">psychology</span>
+</div>
+<h3 class="font-title-md text-title-md mb-md">ML-Powered Forecasting</h3>
+<p class="text-on-surface-variant">Predictive yield forecasting using proprietary deep learning models trained on decades of global harvest data. Know your output before the first seed is sown.</p>
+</div>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-12 lg:col-span-5 glass-card p-xl rounded-xl animate-fade-in-up" style="animation-delay: 0.4s;">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-lg border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="eco">eco</span>
+</div>
+<h3 class="font-title-md text-title-md mb-md">Sustainable Farming</h3>
+<p class="text-on-surface-variant">Resource-efficient practices that automatically adjust irrigation and fertilization based on real-time plant stress levels.</p>
+<div class="mt-lg pt-lg border-t border-white/5 grid grid-cols-2 gap-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="text-body-sm font-body-sm">Zero Waste</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="text-body-sm font-body-sm">CO2 Tracking</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 px-gutter relative overflow-hidden">
+<div class="max-w-4xl mx-auto glass-card rounded-[2rem] p-xl md:p-24 text-center relative z-10">
+<h2 class="font-display-lg text-headline-lg md:text-display-lg mb-md">Ready to Optimize?</h2>
+<p class="text-on-surface-variant text-body-lg mb-xl max-w-xl mx-auto">Join the world's most advanced agricultural network and start seeing measurable results in your next harvest cycle.</p>
+<div class="flex flex-col sm:flex-row gap-md justify-center">
+<input class="bg-surface-container-low border border-white/10 rounded-xl px-lg py-md w-full sm:w-80 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Enter your work email" type="email"/>
+<button class="bg-primary-container text-on-primary-container px-xl py-md rounded-xl font-bold hover:scale-105 active:scale-95 transition-all">Request Access</button>
+</div>
+</div>
+<!-- Decorative Glows -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-container-lowest border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter gap-md max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start gap-sm">
+<div class="font-display-lg text-title-md font-bold text-primary">OptiCrop</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm">© 2024 OptiCrop Precision. Engineered for Sustainable Growth.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-xl">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">API Documentation</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Contact Support</a>
+</div>
+<div class="flex gap-md">
+<button class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="language">language</span>
+</button>
+<button class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+</button>
+</div>
+</div>
+</footer>
+<script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-fade-in-up').forEach(el => {
+            el.style.opacity = '0'; // Initial state for JS-driven fade-in
+            observer.observe(el);
+        });
+
+        // Simple parallax effect for glass cards
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.glass-card');
+            const x = (window.innerWidth / 2 - e.pageX) / 100;
+            const y = (window.innerHeight / 2 - e.pageY) / 100;
+            
+            cards.forEach(card => {
+                card.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    </script>
+</body></html>
